@@ -1,7 +1,13 @@
 About
 -----
 
-This is a simple plugin for the [Frog CMS](http://www.madebyfrog.com/). It adds the ability to add more metadata to a page object.
+This is a simple plugin for the [Frog CMS][frog]. It adds the ability to add more metadata to a page object.
+
+Motivation
+----------
+
+I'm currently writing on a plugin that needs extra, custom metadata for a page. I didn't want to create a specific database table, so I contribute
+this generic plugin that can be used to store generic metadata for a page.
 
 Requirements
 ------------
@@ -11,11 +17,47 @@ Requirements
 Install
 -------
 
-[Protect your plugins](http://forum.madebyfrog.com/topic/1233). Edit config.php and add the following line.
+[Protect your plugins](http://forum.madebyfrog.com/topic/1233). Edit config.php and add the following line:
 
     define('IN_FROG', true);
 
-Copy plugin files to _frog/plugins/page\_metadata_/_ folder.
+Copy plugin files to _frog/plugins/page\_metadata/_ folder.
 
     cd frog/plugins/
     git clone git://github.com/them/frog_page_metadata.git page_metadata
+
+Usage
+-----
+
+The 'visible' part of the plugin adds another tab to the page view: the 'More Metadata' tab.
+With this dialog any metadata (keyword value pairs) can be added to an existing page.
+If the value left blank, the metadata gets removed
+
+### Getter
+
+The 'PageMetadata' exports the following static functions:
+
+- `FindAllByPage` provide the page or page_id as parameter.
+- `FindAllByPageAsArray` same as above, but returns a simple PHP array
+- `FindOneByPageAndKeyword` returns the value or false for this page and keyword
+  (NOTE: no caching is applied to this function. Ideally use it only once)
+
+NOTE: inside a view the page object is the '$this' reference.
+
+### Extensibility
+
+Because the plugin was generated as a helper plugin for other plugins, the plugin can be extended as well.
+
+#### Observers
+
+The [Frog CMS][frog] offers an [observer mechanism](http://www.madebyfrog.com/docs/plugins-api/the-observer-system.html) to extend the core.
+The 'PageMetadata' plugin exports the following subscribable 'topic':
+
+`view_page_page_metadata` with the page as parameter.
+
+#### Visibility
+
+If the metadata has the 'visibility' of '0', the user is not able to alter the metadata directly. This value should be manipulated (e.g. select box)
+by another plugin that is using the 'observer topic'.
+
+[frog]: http://www.madebyfrog.com/
