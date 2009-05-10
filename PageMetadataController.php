@@ -158,7 +158,7 @@ class PageMetadataController extends PluginController {
     
     // Only for existing pages there can be metadata
     if (isset($page->id) && !empty($page->id)) {
-      $metadata = Record::findAllFrom('PageMetadata', 'page_id = ? ORDER BY keyword', array($page->id));
+      $metadata = PageMetadata::FindAllByPage($page);
     }
     
     // Display the metadata form with metadata (if any).
@@ -194,17 +194,19 @@ class PageMetadataController extends PluginController {
       
       // If the metadata is not existing, create it.
       $is_in_db = true;
-      if (!$obj = Record::findOneFrom('PageMetadata', 'page_id = ? AND keyword = ?', array($page->id, $keyword))) {
+      if (!$obj = PageMetadata::FindOneByPageAndKeyword($page, $keyword)) {
+        $is_in_db = false;
+        // New value object
         $obj = new PageMetadata(array(
           "page_id" => $page->id,
           "keyword" => $keyword,
           "visible" => $visible,
         ));
-        $is_in_db = false;
       }
 
       // Skip or delete empty values.
       if (empty($value)) {
+          // Delete metadata if value is empty
           if ($is_in_db) {
             $obj->delete();
           }
