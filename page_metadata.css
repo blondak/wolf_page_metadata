@@ -35,3 +35,7 @@
   border: 1px solid #ccc;
   font-size: 100%;
 }
+
+.popup .error-message {
+  margin: .5em auto;
+}
