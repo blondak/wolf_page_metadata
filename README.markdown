@@ -11,6 +11,10 @@ Requirements
 Install
 -------
 
+[Protect your plugins](http://forum.madebyfrog.com/topic/1233). Edit config.php and add the following line.
+
+    define('IN_FROG', true);
+
 Copy plugin files to _frog/plugins/jquery/_ folder.
 
     cd frog/plugins/
