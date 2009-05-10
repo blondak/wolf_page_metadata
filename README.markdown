@@ -15,7 +15,7 @@ Install
 
     define('IN_FROG', true);
 
-Copy plugin files to _frog/plugins/jquery/_ folder.
+Copy plugin files to _frog/plugins/page\_metadata_/_ folder.
 
     cd frog/plugins/
     git clone git://github.com/them/frog_page_metadata.git page_metadata
