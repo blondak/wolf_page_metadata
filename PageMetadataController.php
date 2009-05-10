@@ -33,8 +33,8 @@ class PageMetadataController extends PluginController {
         'version'     => self::PLUGIN_VERSION,
        	'license'     => 'AGPL',
       	'author'      => 'THE M',
-        'website'     => '',
-        'update_url'  => '',
+        'website'     => 'http://github.com/them/frog_page_metadata/',
+        'update_url'  => 'http://github.com/them/frog_page_metadata/raw/master/frog-plugins.xml',
         'require_frog_version' => '0.9.5'
     ));
     
