@@ -33,16 +33,11 @@ The 'visible' part of the plugin adds another tab to the page view: the 'More Me
 With this dialog any metadata (keyword value pairs) can be added to an existing page.
 If the value left blank, the metadata gets removed
 
-### Getter
+### Attributes at the page object
 
-The 'PageMetadata' exports the following static functions:
+The current head revision of this plugin extends the page object with the metadata as property.
 
-- `FindAllByPage` provide the page or page_id as parameter.
-- `FindAllByPageAsArray` same as above, but returns a simple PHP array
-- `FindOneByPageAndKeyword` returns the value or false for this page and keyword
-  (NOTE: no caching is applied to this function. Ideally use it only once)
-
-NOTE: inside a view the page object is the '$this' reference.
+While in layout/page context: `<?php echo $this->page_metadata["Keyword"]; ?>` and in controller context: `<?php echo $page->page_metadata["Keyword"]; ?>`.
 
 ### Extensibility
 
