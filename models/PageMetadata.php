@@ -71,7 +71,20 @@ class PageMetadata extends Record {
       return null;
     }
 
-    return Record::findOneFrom('PageMetadata', 'page_id = ? AND keyword = ?', array($page_id, $keyword));
+    return Record::findOneFrom(__CLASS__, 'page_id = ? AND keyword = ?', array($page_id, $keyword));
+  }
+  
+  /**
+   * Deletes all metadata for a given page
+   *
+   * @param page page object or page_id as number
+   */
+  public static function DeleteAllByPage($page) {
+    if (!$page_id = self::Get_page_id($page)) {
+      return;
+    }
+    
+    Record::deleteWhere(__CLASS__, 'page_id = ?', array($page_id));
   }
 }
 ?>

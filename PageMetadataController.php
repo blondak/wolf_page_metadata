@@ -43,6 +43,7 @@ class PageMetadataController extends PluginController {
     
     // The callbacks for the backend
     Observer::observe('page_found', __CLASS__.'::Callback_page_found');
+    Observer::observe('page_delete', __CLASS__.'::Callback_page_delete');
     Observer::observe('view_page_edit_tabs', __CLASS__.'::Callback_view_page_edit_tabs');
     Observer::observe('view_page_edit_popup', __CLASS__.'::Callback_view_page_edit_popup');
     Observer::observe('page_add_after_save', __CLASS__.'::Callback_page_page_updated');
@@ -188,6 +189,15 @@ class PageMetadataController extends PluginController {
     $plugin_id = self::PLUGIN_ID;
     // Apply metadata as simple key value array
     $page->$plugin_id = PageMetadata::FindAllByPageAsArray($page);
+  }
+  
+  /**
+   * Delets all metadata from a deleted page.
+   *
+   * @param page the page object
+   */
+  public static function Callback_page_delete($page) {
+    PageMetadata::DeleteAllByPage($page);
   }
   
   /**
