@@ -42,6 +42,7 @@ class PageMetadataController extends PluginController {
     Plugin::addController(self::PLUGIN_ID, __('Page Metadata'), null, false);
     
     // The callbacks for the backend
+    Observer::observe('page_found', __CLASS__.'::Callback_page_found');
     Observer::observe('view_page_edit_tabs', __CLASS__.'::Callback_view_page_edit_tabs');
     Observer::observe('view_page_edit_popup', __CLASS__.'::Callback_view_page_edit_popup');
     Observer::observe('page_add_after_save', __CLASS__.'::Callback_page_page_updated');
@@ -174,6 +175,19 @@ class PageMetadataController extends PluginController {
    */
   public static function Callback_view_page_edit_popup($page) {
     self::Get_instance()->create_view('new_popup')->display();
+  }
+  
+  /**
+   * Apply additional metadata to page object before displayed.
+   * NOTE: this function manipulates the page object.
+   *
+   * @param page the page object
+   */
+  public static function Callback_page_found($page) {
+    // PHP is a dynamic language, create new attribute
+    $plugin_id = self::PLUGIN_ID;
+    // Apply metadata as simple key value array
+    $page->$plugin_id = PageMetadata::FindAllByPageAsArray($page);
   }
   
   /**
