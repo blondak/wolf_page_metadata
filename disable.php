@@ -1,10 +1,6 @@
 <?php
 // Included?
 if (!defined('IN_FROG')) { exit(); }
-// Allowed for this user?
-AuthUser::load(); if (!(AuthUser::hasPermission('administrator'))) { exit(); }
-
-///////////////////////////////////////////////////////////////////////////////
 
 AutoLoader::addFolder(dirname(__FILE__) . '/models');
 
