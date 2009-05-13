@@ -8,7 +8,7 @@ AutoLoader::addFolder(dirname(__FILE__) . '/lib');
 class PageMetadataController extends PluginController {
   // Plugin information
   const PLUGIN_ID      = "page_metadata";
-  const PLUGIN_VERSION = "0.0.1";
+  const PLUGIN_VERSION = "0.0.2";
 
   // Location of the view folder
   const VIEW_FOLDER            = "page_metadata/views/";
@@ -29,7 +29,7 @@ class PageMetadataController extends PluginController {
     Plugin::setInfos(array(
         'id'          => self::PLUGIN_ID,
         'title'       => __('Page Metadata'),
-        'description' => __('Allows to add more metadata to a page'),
+        'description' => __('Allows to add more metadata to a page.'),
         'version'     => self::PLUGIN_VERSION,
        	'license'     => 'AGPL',
       	'author'      => 'THE M',
