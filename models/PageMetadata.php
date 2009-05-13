@@ -86,5 +86,18 @@ class PageMetadata extends Record {
     
     Record::deleteWhere(__CLASS__, 'page_id = ?', array($page_id));
   }
+  
+  /**
+   * Delets a keyword for all pages. Intention is for plugins that gets deactivated.
+   * 
+   * @param keyword name of the keyword
+   */
+  public static function DeleteAllByKeyword($keyword) {
+    if (empty($keyword)) {
+      return;
+    }
+    
+    Record::deleteWhere(__CLASS__, 'keyword = ?', array($keyword));
+  }
 }
 ?>
