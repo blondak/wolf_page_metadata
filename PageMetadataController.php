@@ -171,10 +171,8 @@ class PageMetadataController extends PluginController {
   
   /**
    * Displays the popup dialog for adding new metadata.
-   *
-   * @param the current page
    */
-  public static function Callback_view_page_edit_popup($page) {
+  public static function Callback_view_page_edit_popup() {
     self::Get_instance()->create_view('new_popup')->display();
   }
   
