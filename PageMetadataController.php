@@ -8,7 +8,7 @@ AutoLoader::addFolder(dirname(__FILE__) . '/lib');
 class PageMetadataController extends PluginController {
   // Plugin information
   const PLUGIN_ID      = "page_metadata";
-  const PLUGIN_VERSION = "0.0.2";
+  const PLUGIN_VERSION = "0.0.3";
 
   // Location of the view folder
   const VIEW_FOLDER            = "page_metadata/views/";
