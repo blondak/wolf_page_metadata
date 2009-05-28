@@ -38,6 +38,10 @@
   font-size: 100%;
 }
 
+#Page-metadata-delete-table {
+  margin: 1em 0;
+}
+
 .popup .error-message {
   margin: .5em auto;
 }

@@ -8,7 +8,7 @@ AutoLoader::addFolder(dirname(__FILE__) . '/lib');
 class PageMetadataController extends PluginController {
   // Plugin information
   const PLUGIN_ID      = "page_metadata";
-  const PLUGIN_VERSION = "0.0.3";
+  const PLUGIN_VERSION = "0.0.4";
 
   // Location of the view folder
   const VIEW_FOLDER            = "page_metadata/views/";
@@ -73,7 +73,7 @@ class PageMetadataController extends PluginController {
         redirect(get_url('login'));            
     }
     
-    self::$Instance = $this;
+    $this->setLayout('backend');
   }
 
   /**
@@ -81,6 +81,31 @@ class PageMetadataController extends PluginController {
    */
   public function __call($name, $args) {
     redirect(get_url(''));  
+  }
+
+  /**
+   * Settings function to delete the metadata table.
+   */
+  public function settings() {
+    $this->display('settings');
+  }
+  
+  public function cleanup() {
+    // XXX: because there is no permission check from the backend, it must be done here
+    if (!AuthUser::hasPermission('administrator') && !AuthUser::hasPermission('developer')) {
+      redirect(get_url());
+    }
+    
+    $table_name = TABLE_PREFIX.PageMetadata::TABLE_NAME;
+
+    // Connection
+    $pdo = Record::getConnection();
+
+    // Clean metadata
+    $pdo->exec("DROP TABLE $table_name");
+    
+    Flash::set('success', __("Table for Page Metadata deleted. Disable the plugin now."));
+    redirect(get_url('setting'));    
   }
   
   /**
