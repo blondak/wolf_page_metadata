@@ -8,7 +8,7 @@ AutoLoader::addFolder(dirname(__FILE__) . '/lib');
 class PageMetadataController extends PluginController {
   // Plugin information
   const PLUGIN_ID      = "page_metadata";
-  const PLUGIN_VERSION = "0.0.4";
+  const PLUGIN_VERSION = "0.0.5";
 
   // Location of the view folder
   const VIEW_FOLDER            = "page_metadata/views/";
@@ -117,6 +117,8 @@ class PageMetadataController extends PluginController {
       header("Status: 412 Precondition Failed");
       exit();
     }
+
+    $this->setLayout(false);
 
     $this->display('template', array(
       'keyword' => $_POST["keyword"],
