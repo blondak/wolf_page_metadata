@@ -8,7 +8,6 @@ AutoLoader::addFolder(dirname(__FILE__) . '/lib');
 class PageMetadataController extends PluginController {
   // Plugin information
   const PLUGIN_ID      = "page_metadata";
-  const PLUGIN_VERSION = "0.0.5";
 
   // Location of the view folder
   const VIEW_FOLDER            = "page_metadata/views/";
@@ -20,35 +19,6 @@ class PageMetadataController extends PluginController {
   
   // Singleton instance for observers
   private static $Instance;
-
-  /**
-   * Registers the plugin and controller in the system as well as the observers.
-   */
-  public static function Init() {
-    // Register plugin
-    Plugin::setInfos(array(
-        'id'          => self::PLUGIN_ID,
-        'title'       => __('Page Metadata'),
-        'description' => __('Allows to add more metadata to a page.'),
-        'version'     => self::PLUGIN_VERSION,
-       	'license'     => 'AGPL',
-      	'author'      => 'THE M',
-        'website'     => 'http://github.com/them/frog_page_metadata/',
-        'update_url'  => 'http://github.com/them/frog_page_metadata/raw/master/frog-plugins.xml',
-        'require_frog_version' => '0.9.5'
-    ));
-    
-    // Register controller
-    Plugin::addController(self::PLUGIN_ID, __('Page Metadata'), null, false);
-    
-    // The callbacks for the backend
-    Observer::observe('page_found', __CLASS__.'::Callback_page_found');
-    Observer::observe('page_delete', __CLASS__.'::Callback_page_delete');
-    Observer::observe('view_page_edit_tabs', __CLASS__.'::Callback_view_page_edit_tabs');
-    Observer::observe('view_page_edit_popup', __CLASS__.'::Callback_view_page_edit_popup');
-    Observer::observe('page_add_after_save', __CLASS__.'::Callback_page_page_updated');
-    Observer::observe('page_edit_after_save', __CLASS__.'::Callback_page_page_updated');
-  }
 
   /**
    * Returns the instance of the controller.

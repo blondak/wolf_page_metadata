@@ -2,7 +2,7 @@
 <frog-plugins>
   <frog-plugin>
       <id>page_metadata</id>
-      <version>0.0.5</version>
-      <status>beta</status>
+      <version>1.0.0</version>
+      <status>final</status>
   </frog-plugin>
 </frog-plugins>
