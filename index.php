@@ -7,7 +7,7 @@ Plugin::setInfos(array(
   'id'          => $plugin_id,
   'title'       => __('Page Metadata'),
   'description' => __('Allows to add more metadata to a page.'),
-  'version'     => '1.0.0',
+  'version'     => '1.0.1',
   'license'     => 'MIT',
   'author'      => 'THE M',
   'website'     => 'http://github.com/them/frog_page_metadata/',

@@ -39,7 +39,7 @@ class PageMetadata extends Record {
       return array();
     }
     
-    return Record::findAllFrom(__CLASS__, 'page_id = ? ORDER BY keyword', array($page_id));
+    return self::findAllFrom(__CLASS__, 'page_id = ? ORDER BY keyword', array($page_id));
   }
   
   /**
@@ -71,7 +71,7 @@ class PageMetadata extends Record {
       return null;
     }
 
-    return Record::findOneFrom(__CLASS__, 'page_id = ? AND keyword = ?', array($page_id, $keyword));
+    return self::findOneFrom(__CLASS__, 'page_id = ? AND keyword = ?', array($page_id, $keyword));
   }
   
   /**
@@ -84,7 +84,7 @@ class PageMetadata extends Record {
       return;
     }
     
-    Record::deleteWhere(__CLASS__, 'page_id = ?', array($page_id));
+    self::deleteWhere(__CLASS__, 'page_id = ?', array($page_id));
   }
   
   /**
@@ -97,7 +97,7 @@ class PageMetadata extends Record {
       return;
     }
     
-    Record::deleteWhere(__CLASS__, 'keyword = ?', array($keyword));
+    self::deleteWhere(__CLASS__, 'keyword = ?', array($keyword));
   }
 }
 ?>

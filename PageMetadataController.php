@@ -203,6 +203,13 @@ class PageMetadataController extends PluginController {
    * @param the current page
    */
   public static function Callback_page_page_updated($page) {
+    // If there is no metadata submited at all, just delete (possible) existing ones for this page.
+    // There could be invisible metadata (from other plug-ins). Thanks to: Andy
+    if (!isset($_POST[self::PLUGIN_ID])) {
+      PageMetadata::DeleteAllByPage($page);
+      return;
+    }
+    
     // Get all posted metadata
     foreach ($_POST[self::PLUGIN_ID] as $metadata) {
       $value   = trim($metadata["value"]);
