@@ -14,7 +14,12 @@ Plugin::setInfos(array(
   'update_url'  => 'http://github.com/them/frog_page_metadata/raw/master/frog-plugins.xml',
   'require_frog_version' => '0.9.5'
 ));
-  
+
+// XXX: because "page found" is a subscribed topix, the controller must
+//      be available for the frontend. Wolf does not auto populate in the
+//      frontend when registering the controller.
+AutoLoader::addFolder(dirname(__FILE__));  
+
 // Register controller
 Plugin::addController($plugin_id, __('Page Metadata'), null, false);
   
