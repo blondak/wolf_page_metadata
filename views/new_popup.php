@@ -1,7 +1,9 @@
-<div class="popup" id="<?php echo $css_id_prefix; ?>new-popup" style="display: none;">
-  <h3><?php echo __('Add new metadata'); ?></h3>
-  <div id="<?php echo $css_id_prefix; ?>busy" class="busy" style="display: none;"><img alt="Spinner" src="images/spinner.gif" /></div>
-  
+<div class="window" id="<?php echo $css_id_prefix; ?>new-popup" style="display: none;">
+  <div class="titlebar"><?php echo __('Add new metadata'); ?>
+    <div id="<?php echo $css_id_prefix; ?>busy" class="busy" style="display: none;"><img alt="Spinner" src="images/spinner.gif" /></div>
+    <a class="close" href="">[x]</a>
+  </div>
+<div class="content">
   <div id="<?php echo $css_id_prefix; ?>new-popup-error" style="display: none;" class="error-message">
     <?php echo __('This metadata can not be added.'); ?>
   </div>
@@ -12,6 +14,6 @@
       <input type="text" id="<?php echo $css_id_prefix; ?>new-value" name="value" value="<?php echo __('Value'); ?>" />
       <input type="submit" id="<?php echo $css_id_prefix; ?>new-button" name="commit" value="<?php echo __('Add'); ?>" />
     </div>
-    <p><a class="close-link" href="#" onclick="Element.hide('<?php echo $css_id_prefix; ?>new-popup'); return false;"><?php echo __('Close'); ?></a></p>
   </form>
+</div>
 </div>

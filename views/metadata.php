@@ -1,5 +1,5 @@
-<div id="<?php echo $css_id_prefix;?>container" title="<?php echo __('More Metadata'); ?>">
-  <a href="#" onclick="toggle_popup('<?php echo $css_id_prefix;?>new-popup', '<?php echo $css_id_prefix; ?>new-keyword'); return false;" title="<?php echo __('Add Metadata'); ?>"><img src="images/plus.png" alt="plus icon" /></a>
+<div id="<?php echo $css_id_prefix;?>container" class="page" title="<?php echo __('More Metadata'); ?>">
+  <a href="#" id="add-metadata" onclick="toggle_popup('<?php echo $css_id_prefix;?>new-popup', '<?php echo $css_id_prefix; ?>new-keyword'); return false;" title="<?php echo __('Add Metadata'); ?>"><img src="<?php echo URI_PUBLIC;?>wolf/admin/images/plus.png" alt="plus icon" /></a>
 
 <?php 
   // Use a simple counter as key for the forms

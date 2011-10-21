@@ -12,6 +12,6 @@
      class="<?php echo $css_class_prefix; ?>value"
     />
     <input class="<?php echo $css_class_prefix; ?>name" type="hidden" name="<?php echo $plugin_id; ?>[<?php echo $unique; ?>][name]" value="<?php echo $keyword; ?>" />
-    <a class="<?php echo $css_class_prefix; ?>action" href="#" onclick="if (confirm('<?php echo __('Delete current metadata?'); ?>')) { page_metadata_remove('<?php echo $keyword_css_id; ?>', '<?php echo $keyword; ?>'); }; return false;" title="<?php echo __('Remove Metadata'); ?>"><img src="images/minus.png" alt="minus icon" /></a>
+    <a class="<?php echo $css_class_prefix; ?>action" href="#" onclick="if (confirm('<?php echo __('Delete current metadata?'); ?>')) { page_metadata_remove('<?php echo $keyword_css_id; ?>', '<?php echo $keyword; ?>'); }; return false;" title="<?php echo __('Remove Metadata'); ?>"><img src="<?php echo URI_PUBLIC;?>wolf/admin/images/minus.png" alt="minus icon" /></a>
   </div>
 </div>

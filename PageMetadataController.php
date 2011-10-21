@@ -147,6 +147,10 @@ class PageMetadataController extends PluginController {
     return new View(self::PLUGIN_REL_VIEW_FOLDER.$view, $vars);
   }
 
+  public static function Callback_view_page_edit_tab_links($page){
+    self::Get_instance()->create_view('tab')->display();
+  }
+
   /**
    * Adds a new tab with the metadata.
    *
